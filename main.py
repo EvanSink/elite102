@@ -29,3 +29,28 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+"""
+Print the gui to the screen
+import tkinter as tk
+def main():
+    root = tk.Tk()
+    root.title("Sample GUI")
+
+    label = tk.Label(root, text="Hello, World!")
+    label.pack()
+
+    entry = tk.Entry(root)
+    entry.pack()
+
+    button = tk.Button(root, text="Click Me", command=lambda: print(entry.get()))
+    button.pack()
+
+    root.mainloop()
+if __name__ == "__main__":  
+Whats your Pin?
+Whats your User?
+Whats your Password?
+
+"""

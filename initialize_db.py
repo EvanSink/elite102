@@ -1,6 +1,6 @@
 import sqlite3
 
-DB_NAME = 'example.db'
+DB_NAME = 'evans_project.db'
 
 
 def initialize_database():
@@ -11,26 +11,31 @@ def initialize_database():
     # Create a sample table
     print("Creating table if it does not exist...")
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS students
-            (id integer primary key, 
-            name text, 
-            age integer, 
-            grade text, 
-            gpa real)
+        CREATE TABLE IF NOT EXISTS bankingInfo
+            (bank_id integer primary key, 
+            username text, 
+            bank_pin integer, 
+            credit integer, 
+            balance integer)
     ''')
 
     print("Table created.")
 
+    print("Please enter the following information:")
+    username = input("Username: ")
+    bank_pin = int(input("Bank Pin: "))
+    credit = int(input("Credit: "))
+    balance = int(input("Balance: "))
+
     # Insert sample data
     print("Inserting sample data...")
     cursor.execute('''
-        INSERT INTO students (name, age,grade, gpa) VALUES
-        ('Alice', 16, '10th', 3.5),
-        ('Bob', 17, '11th', 3.8),
-        ('Charlie', 15, '9th', 3.2)
-    ''')
-    print("Sample data inserted.")
+        INSERT INTO bankingInfo (username, bank_pin, credit, balance) VALUES
+        (?, ?, ?, ?)
+    ''', (username, bank_pin, credit, balance))
+    print("Person data inserted.")
     # Commit the changes and close the connection
+    print("Making sure the code is actually changing and not just repeating...")
     print("Committing changes and closing the connection...")
     connection.commit()
     connection.close()
